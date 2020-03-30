@@ -26,13 +26,13 @@ class Transactions(models.Model):
 
 
 class PossessionTitle(models.Model):
-    id_possession = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name_title = models.CharField(max_length=30)
     owner_title = models.BigIntegerField(editable=True)
 
 
 class TitleAttr(models.Model):
-    id_titleattr = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     possession = models.ForeignKey(PossessionTitle, related_name='id_possession', on_delete=models.CASCADE)
     name_attr = models.CharField(max_length=30)
     value = models.DecimalField(max_digits=10, decimal_places=2)
