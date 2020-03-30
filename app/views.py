@@ -23,15 +23,13 @@ def gentella_html(request):
 
 def Account_html(request, number):
     try:
+        template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
         f_transaction = Transactions.objects.filter(update_account=number).order_by('id')
+        context = {
+        'number': number,
+        'transacao': f_transaction,
+    }
     except Board.DoesNotExist:
         raise Http404
-    return render(request, 'app/plain_page.html', {'number': number })
-
-def Account_html(request, number):
-    try:
-        f_transaction = Transactions.objects.filter(update_account=number).order_by('id')
-    except Board.DoesNotExist:
-        raise Http404
-    return render(request, 'app/plain_page.html', {'f_transaction': f_transaction})
+    return HttpResponse(template.render(context, request))
