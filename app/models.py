@@ -10,6 +10,7 @@ class Account(models.Model):
     balance = models.DecimalField(max_digits=10, decimal_places=2)
 
 
+
 class Transactions(models.Model):
     TRANS_TYPE = (
             ('D', 'Deposit'),
@@ -22,4 +23,17 @@ class Transactions(models.Model):
 
     def __str__(self):
         return self.update_account
+
+
+class PossessionTitle(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=30)
+    owner_title = models.BigIntegerField(editable=True)
+
+
+class TitleAttr(models.Model):
+    id = models.AutoField(primary_key=True)
+    possession = models.ForeignKey(PossessionTitle, ralated_name='name', on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
+    value = models.DecimalField(max_digits=10, decimal_places=2)
 
