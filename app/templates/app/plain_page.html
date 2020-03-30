@@ -123,12 +123,14 @@
             </tr>
           </thead>
           <tbody>
+            {% for lista in f_transaction %}
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">{{ lista.id }}</th>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
             </tr>
+            {% endfor %}
             <tr>
               <th scope="row">2</th>
               <td>Jacob</td>
