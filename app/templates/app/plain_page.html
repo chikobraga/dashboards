@@ -123,7 +123,7 @@
             </tr>
           </thead>
           <tbody>
-            {{ for lista in f_transaction }}
+            {% for lista in f_transaction %}
             <tr>
               <th scope="row">{{ lista.id }}</th>
               <td>{{ lista.update_account }}</td>
@@ -131,7 +131,7 @@
               <td>{{ lista.transaction }}</td>
             </tr>
             <tr>
-              {{ endfor }}
+              {% endfor %}
               <th scope="row">2</th>
               <td>Jacob</td>
               <td>Thornton</td>
