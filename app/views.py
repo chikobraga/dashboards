@@ -25,10 +25,10 @@ def Account_html(request, number):
     try:
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
-        f_transaction = Transactions.objects.filter(update_account=number).order_by('id')
+        transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
         'number': number,
-        'transacao': f_transaction,
+        'transacao': transacao,
     }
     except Board.DoesNotExist:
         raise Http404
