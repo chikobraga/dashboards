@@ -20,3 +20,6 @@ class Transactions(models.Model):
     update_account = models.ForeignKey(Account, related_name='accountnumbers', on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self):
+        return self.update_account
+
