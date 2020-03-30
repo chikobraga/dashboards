@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-from app.models import Account
+from app.models import Account, Transactions
 
 
 def index(request):
@@ -24,6 +24,7 @@ def gentella_html(request):
 def Account_html(request, number):
     try:
         number = Account.objects.get(pk=number)
+        f_transaction = Transactions.objects.filter(number).order_by('id')
     except Board.DoesNotExist:
         raise Http404
-    return render(request, 'app/plain_page.html', {'number': number })
+    return render(request, 'app/plain_page.html', {'number': number }, {'f_transaction': f_transaction})
