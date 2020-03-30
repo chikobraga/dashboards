@@ -126,9 +126,9 @@
             {% for lista in transacao %}
             <tr>
               <th scope="row">{{ lista.id }}</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>{{ lista.update_account }}</td>
+              <td>{{ lista.value }}</td>
+              <td>{{ lista.transaction }}</td>
             </tr>
             {% endfor %}
             <tr>
