@@ -9,4 +9,5 @@ urlpatterns = [
 
     # The home page
     path('', views.index, name='login'),
+    path('account/<int:number>/', views.Account_html, name='accountnumber'),
 ]

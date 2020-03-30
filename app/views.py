@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from app.models import Account
 
 
 def index(request):
@@ -19,3 +20,10 @@ def gentella_html(request):
     template = loader.get_template('app/' + load_template)
     return HttpResponse(template.render(context, request))
 
+
+def Account_html(request, number):
+    try:
+        number = Account.objects.get(pk=number)
+    except Board.DoesNotExist:
+        raise Http404
+    return render(request, 'app/plain_page.html', {'number': number })
