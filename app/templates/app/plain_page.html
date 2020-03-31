@@ -41,8 +41,10 @@
                   <select id="heard" name="op_name" class="form-control" required="">
                       <option value="">Choose..</option>
                     {% for contas in others_c %}
-                      <option value="press">{{ contas.name }} </option>
-                     {% endfor %}
+                      {% if contas.accountnumber =! number.accountnumber %}
+                       <option value="press">{{ contas.name }} </option>
+                      {% endif %}
+                    {% endfor %}
                     </select>
                   </div>
                 </div>

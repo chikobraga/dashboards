@@ -25,7 +25,7 @@ def Account_html(request, number):
     try:
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
-        others_c = Account.objects.filter().exclude(update_account=number)
+        others_c = Account.objects.all()
         transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
         'number': number,
