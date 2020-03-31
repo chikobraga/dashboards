@@ -29,6 +29,7 @@ class PossessionTitle(models.Model):
     id = models.AutoField(primary_key=True)
     name_title = models.CharField(max_length=30)
     owner_title = models.BigIntegerField(editable=True, blank=True)
+    color = models.CharField(max_length=30, blank=True)
 
 
 class TitleAttr(models.Model):
