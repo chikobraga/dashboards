@@ -9,8 +9,6 @@ class Account(models.Model):
     name = models.CharField(max_length=30)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
 
-
-
 class Transactions(models.Model):
     TRANS_TYPE = (
             ('D', 'Deposit'),
@@ -18,8 +16,7 @@ class Transactions(models.Model):
         )
     id = models.AutoField(primary_key=True)
     transaction = models.CharField(max_length=1, choices=TRANS_TYPE)
-    ori_account = models.ForeignKey(Account, related_name='account_ori', on_delete=models.CASCADE)
-    dest_account = models.ForeignKey(Account, related_name='account_dest', on_delete=models.CASCADE)
+    update_account = models.ForeignKey(Account, related_name='accounts', on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=10, decimal_places=2)
 
 
