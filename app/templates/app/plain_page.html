@@ -11,7 +11,7 @@
   <!-- top tiles -->
   <div class="row tile_count">
     <div class="col-md-3 col-sm-6 col-xs-8 tile_stats_count">
-	    <span class="count_top"><i class="fa fa-user"></i>Name: {{ number.name }}</span>
+	    <span class="count_top"><i class="fa fa-user"></i> Name: {{ number.name }}</span>
 	    <i class="fa fa-money"></i><div class="count">{{ number.balance }}</div>
     </div>
    <!-- /top tiles -->
@@ -90,11 +90,11 @@
               {% if lista.transaction == "D" %}
               <td class="count red">{{ lista.update_account }}</td>
               <td class="count red"><i class="fa fa-usd"></i>{{ lista.value }}</td>
-              <td class="badge bg-red">{{ lista.transaction }}</td>
+              <td class="label label-danger">{{ lista.transaction }}</td>
               {% else %}
               <td class="count green">{{ lista.dest_account }}</td>
               <td class="count green"><i class="fa fa-usd"></i>{{ lista.value }}</td>
-              <td class="badge bg-red">{{ lista.transaction }}</td>
+              <td class="""label label-success">{{ lista.transaction }}</td>
               {% endif %}
             </tr>
             {% endfor %}
@@ -119,56 +119,16 @@
       <div class="x_content">
         <ul class="list-unstyled timeline">
           <li>
+            {% for titulos in p_title %}
             <div class="block">
               <div class="tags">
-                  <span>Entertainment</span>
+                  <span>{{ titulos.name_title }}</span>
                 </a>
               </div>
               <div class="block_content">
                 <h2 class="title">
-                                <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                <a>{{ titulos.name_title }}</a>
                             </h2>
-                <div class="byline">
-                  <span>13 hours ago</span> by <a>Jane Smith</a>
-                </div>
-                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="block">
-              <div class="tags">
-                <a href="" class="tag">
-                  <span>Entertainment</span>
-                </a>
-              </div>
-              <div class="block_content">
-                <h2 class="title">
-                                <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                            </h2>
-                <div class="byline">
-                  <span>13 hours ago</span> by <a>Jane Smith</a>
-                </div>
-                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="block">
-              <div class="tags">
-                <a href="" class="tag">
-                  <span>Entertainment</span>
-                </a>
-              </div>
-              <div class="block_content">
-                <h2 class="title">
-                                <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                            </h2>
-                <div class="byline">
-                  <span>13 hours ago</span> by <a>Jane Smith</a>
-                </div>
                 <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
                 </p>
               </div>
