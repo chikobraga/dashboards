@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Account, Transactions, PossessionTitle, TitleAttr
+from app.models import *
 
 # Register your models here.
 
