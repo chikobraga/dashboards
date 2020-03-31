@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-from app.models import Account, Transactions
+from app.models import *
 
 
 def index(request):
@@ -25,10 +25,12 @@ def Account_html(request, number):
     try:
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
+        others_c = Account.objects.filter().exclude(update_account=number)
         transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
         'number': number,
         'transacao': transacao,
+        'others_c' : others_c
     }
     except Board.DoesNotExist:
         raise Http404
