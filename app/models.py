@@ -28,7 +28,7 @@ class Transactions(models.Model):
 class PossessionTitle(models.Model):
     id = models.AutoField(primary_key=True)
     name_title = models.CharField(max_length=30)
-    owner_title = models.BigIntegerField(editable=True, blank=True)
+    owner_title = models.BigIntegerField(editable=True, null=True)
     color = models.CharField(max_length=30, blank=True)
 
 
