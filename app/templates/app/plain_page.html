@@ -88,11 +88,13 @@
               <th scope="row">{{ lista.id }}</th>
               {% if lista.transaction == "D" %}
               <td class="count red">{{ lista.update_account }}</td>
+              <td class="count red"><i class="fa fa-usd"></i>{{ lista.value }}</td>
+              <td class="badge bg-red">{{ lista.transaction }}</td>
               {% else %}
               <td class="count green">{{ lista.dest_account }}</td>
+              <td class="count green"><i class="fa fa-usd"></i>{{ lista.value }}</td>
+              <td class="badge bg-red">{{ lista.transaction }}</td>
               {% endif %}
-              <td><i class="fa fa-usd"></i>{{ lista.value }}</td>
-              <td>{{ lista.transaction }}</td>
             </tr>
             {% endfor %}
           </tbody>
