@@ -18,7 +18,8 @@ class Transactions(models.Model):
         )
     id = models.AutoField(primary_key=True)
     transaction = models.CharField(max_length=1, choices=TRANS_TYPE)
-    update_account = models.ForeignKey(Account, related_name='accountnumbers', on_delete=models.CASCADE)
+    ori_account = models.ForeignKey(Account, related_name='account_ori', on_delete=models.CASCADE)
+    dest_account = models.ForeignKey(Account, related_name='account_dest', on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=10, decimal_places=2)
 
 
