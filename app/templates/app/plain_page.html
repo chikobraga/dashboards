@@ -118,8 +118,8 @@
       </div>
       <div class="x_content">
         <ul class="list-unstyled timeline">
+          {% for titulos in p_title %}
           <li>
-            {% for titulos in p_title %}
             <div class="block">
               <div class="tags">
                   <span>{{ titulos.name_title }}</span>
@@ -127,13 +127,14 @@
               </div>
               <div class="block_content">
                 <h2 class="title">
-                                <a>{{ titulos.name_title }}</a>
-                            </h2>
+                  <a>{{ titulos.name_title }}</a>
+                </h2>
                 <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
                 </p>
               </div>
             </div>
           </li>
+          {% endfor %}
         </ul>
 
       </div>
