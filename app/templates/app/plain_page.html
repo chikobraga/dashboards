@@ -104,6 +104,7 @@
       </div>
     </div>
   </div>
+  {% if p_title %}
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
@@ -138,7 +139,7 @@
                 {% else %}
                   <i class="fa fa-building"></i>
                 {% endif %}
-                {{ atributos.name_attr }} - <i class="fa fa-usd"></i> {{ atributos.value }} - {{atributos.type_info}} </p>
+                {{ atributos.name_attr }} - <i class="fa fa-usd"></i> {{ atributos.value }} </p>
                 {% endif %}
 
                 {% endfor %}
@@ -151,7 +152,7 @@
                 {% else %}
                   <i class="fa fa-building"></i>
                 {% endif %}
-                {{ info.description }} - {{ info.value }} </p>
+                {{ info.description }} - <i class="fa fa-usd"></i>  {{ info.value }} </p>
                 {% endif %}
                 {% endfor %}
                 </p>
@@ -160,10 +161,11 @@
           </li>
           {% endfor %}
         </ul>
-
       </div>
     </div>
   </div>
+  {% else %}
+  {% endif %}
 </div>
 {% endblock content %}
 
