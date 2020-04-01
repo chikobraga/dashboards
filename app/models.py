@@ -24,7 +24,7 @@ class Transactions(models.Model):
 
 
 class PossessionTitle(models.Model):
-    COLOR (
+    COLOR = (
         ('1', 'Preto'),
         ('2', 'Vemelho'),
         ('3', 'Azul'),
