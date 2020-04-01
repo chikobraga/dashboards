@@ -130,7 +130,7 @@
                 <h2 class="title">
                   <a>{{ titulos.name_title }}</a>
                 </h2>
-                {% for atributos in p_attr %}
+                {% for atributos in p_attr.filter(id=titulos.id) %}
                 <p class="excerpt"><p> <i class="fa fa-building"></i>{{ atributos.name_attr }}</p>
                 {% endfor %}
                 <p class="excerpt"><p> <i class="fa fa-home"></i>Teste2</p>
