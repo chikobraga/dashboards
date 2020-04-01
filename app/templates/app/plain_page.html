@@ -130,9 +130,7 @@
                 <h2 class="title">
                   <a>{{ titulos.name_title }}</a>
                 </h2>
-                {% for atributos in titulos.id_possession.iterator() %}
-                <p class="excerpt"><p> <i class="fa fa-building"></i>{{atributos.name_attr}}</p>
-                {% endfor %}
+                <p class="excerpt"><p> <i class="fa fa-building"></i>{{ titulos.id_possession.values_list() }}</p>
                 <p class="excerpt"><p> <i class="fa fa-home"></i>Teste2</p>
                 <p class="excerpt"><p> <i class="fa fa-home"></i>Teste2</p>
                 </p>
