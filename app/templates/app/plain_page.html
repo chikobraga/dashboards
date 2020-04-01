@@ -119,6 +119,7 @@
       <div class="x_content">
         <ul class="list-unstyled timeline">
           {% for titulos in p_title %}
+          {{ atributos = p_title.select_related().get(id=titulos.id) }}
           <li>
             <div class="block">
               <div class="tags">
