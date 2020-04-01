@@ -133,7 +133,7 @@
                 {% for atributos in p_attr %}
                 {% if atributos.possession == titulos %}
                 <p class="excerpt"><p>
-                {% if atributos.type_info == 1 %}
+                {% if atributos.type_info == '1' %}
                   <i class="fa fa-home"></i>
                 {% else %}
                   <i class="fa fa-building"></i>
@@ -146,7 +146,7 @@
                 {% for info in p_info %}
                 {% if info.info_possession == titulos %}
                 <p class="excerpt"><p>
-                {% if info.type_info == 1 %}
+                {% if info.type_info == '1' %}
                   <i class="fa fa-home"></i>
                 {% else %}
                   <i class="fa fa-building"></i>
