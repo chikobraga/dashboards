@@ -138,12 +138,13 @@
                 {% else %}
                   <i class="fa fa-building"></i>
                 {% endif %}
-                {{ atributos.name_attr }} - <i class="fa fa-usd"></i> {{ atributos.value }}</p>
+                {{ atributos.name_attr }} - <i class="fa fa-usd"></i> {{ atributos.value }} - {{atributos.type_info}} </p>
                 {% endif %}
 
                 {% endfor %}
                 <div class="tiles"></div>
                 {% for info in p_info %}
+                {% if info.info_possession == titulos %}
                 <p class="excerpt"><p>
                 {% if info.type_info == 1 %}
                   <i class="fa fa-home"></i>
@@ -151,6 +152,7 @@
                   <i class="fa fa-building"></i>
                 {% endif %}
                 {{ info.description }} - {{ info.value }} </p>
+                {% endif %}
                 {% endfor %}
                 </p>
               </div>
