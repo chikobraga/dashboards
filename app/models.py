@@ -4,10 +4,12 @@ from django.db import models
 
 # Create your models here.
 
+
 class Account(models.Model):
     accountnumber = models.BigIntegerField(primary_key=True, editable=True)
     name = models.CharField(max_length=30)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
+
 
 class Transactions(models.Model):
     TRANS_TYPE = (
@@ -22,10 +24,6 @@ class Transactions(models.Model):
 
 
 class PossessionTitle(models.Model):
-    INFO_TYPE (
-        ('1', 'Casa'),
-        ('2', 'Hotel'),
-    )
     COLOR (
         ('1', 'Preto'),
         ('2', 'Vemelho'),
@@ -44,6 +42,7 @@ class TitleAttr(models.Model):
     possession = models.ForeignKey(PossessionTitle, related_name='id_possession', on_delete=models.CASCADE)
     name_attr = models.CharField(max_length=30)
     value = models.DecimalField(max_digits=10, decimal_places=2)
+
 
 class InfoPossession(models.Model):
     INFO_TYPE = (
