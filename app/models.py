@@ -22,10 +22,21 @@ class Transactions(models.Model):
 
 
 class PossessionTitle(models.Model):
+    INFO_TYPE (
+        ('1', 'Casa'),
+        ('2', 'Hotel'),
+    )
+    COLOR (
+        ('1', 'Preto'),
+        ('2', 'Vemelho'),
+        ('3', 'Azul'),
+        ('4', 'Amarelo'),
+        ('5', 'Verde'),
+    )
     id = models.AutoField(primary_key=True)
     name_title = models.CharField(max_length=30)
     owner_title = models.ForeignKey(Account, related_name='poss_account', null=True, blank=True, on_delete=models.CASCADE)
-    color = models.CharField(max_length=30, null=True, blank=True)
+    color = models.CharField(max_length=1, null=True, blank=True, choices=COLOR)
 
 
 class TitleAttr(models.Model):
@@ -33,4 +44,13 @@ class TitleAttr(models.Model):
     possession = models.ForeignKey(PossessionTitle, related_name='id_possession', on_delete=models.CASCADE)
     name_attr = models.CharField(max_length=30)
     value = models.DecimalField(max_digits=10, decimal_places=2)
+
+class InfoPossession(models.Model):
+    INFO_TYPE = (
+        ('1', 'Casa'),
+        ('2', 'Hotel'),
+    )
+    id = models.AutoField(primary_key=True)
+    info_possession = models.ForeignKey(PossessionTitle, related_name='id_infopossession', on_delete=models.CASCADE)
+    type_info = models.CharField(max_length=1, choices=INFO_TYPE)
 
