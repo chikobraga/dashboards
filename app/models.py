@@ -38,10 +38,15 @@ class PossessionTitle(models.Model):
 
 
 class TitleAttr(models.Model):
+    INFO_TYPE = (
+        ('1', 'Casa'),
+        ('2', 'Hotel'),
+    )
     id = models.AutoField(primary_key=True)
     possession = models.ForeignKey(PossessionTitle, related_name='id_possession', on_delete=models.CASCADE)
     name_attr = models.CharField(max_length=30)
     value = models.DecimalField(max_digits=10, decimal_places=2)
+    type_info = models.CharField(max_length=1, choices=INFO_TYPE, blank=True, null=True)
 
 
 class InfoPossession(models.Model):

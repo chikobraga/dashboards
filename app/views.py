@@ -27,6 +27,7 @@ def Account_html(request, number):
         number = Account.objects.get(pk=number)
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
+        p_info = InfoPossession.objects.all()
         p_title = PossessionTitle.objects.filter(owner_title=number)
         transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
