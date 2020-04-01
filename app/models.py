@@ -53,5 +53,5 @@ class InfoPossession(models.Model):
     description = models.CharField(max_length=30, blank=True)
     value = models.DecimalField(max_digits=10, decimal_places=2)
     info_possession = models.ForeignKey(PossessionTitle, related_name='id_infopossession', on_delete=models.CASCADE)
-    type_info = models.CharField(max_length=1, choices=INFO_TYPE)
+    type_info = models.CharField(max_length=1, choices=INFO_TYPE, blank=True, null=True)
 
