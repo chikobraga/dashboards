@@ -90,11 +90,11 @@
               {% if lista.transaction == "D" %}
               <td class="count green">{{ lista.update_account }}</td>
               <td class="count grenn"><i class="fa fa-usd"></i>{{ lista.value }}</td>
-              <td class="label label-success">{{ lista.transaction }}</td>
+              <td><span class="label label-success">{{ lista.transaction }}</span></td>
               {% else %}
               <td class="count red">{{ lista.dest_account }}</td>
               <td class="count red"><i class="fa fa-usd"></i>{{ lista.value }}</td>
-              <td class="label label-danger">{{ lista.transaction }}</td>
+              <td> <span class="label label-danger"> {{ lista.transaction }}</span></td>
               {% endif %}
             </tr>
             {% endfor %}
@@ -130,8 +130,10 @@
                 <h2 class="title">
                   <a>{{ titulos.name_title }}</a>
                 </h2>
-                <p class="excerpt"><p> <i class="fa fa-building"></i>Teste</p>
-                <p class="excerpt"><p> <i class="fa fa-home"></i>Teste2</p>
+                {% atributos = p_title.select_related().get(id=titulos.id)
+                  for list_atributos in atributos.id_possession.all() %}
+                <p class="excerpt"><p> <i class="fa fa-building"></i> {{ list_atributos.name_attr }} <i class="fa fa-usd">{{ list_atributos.value }}</p>
+                {% endfor %}
                 </p>
               </div>
             </div>
