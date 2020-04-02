@@ -33,11 +33,9 @@ def Account_html(request, number):
             dest_transfer = Account.objects.get(pk=op_name)
 
             transfer1 = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
-            account1 = Account.objects.update(pk=account,balance=F('balance') - value_rec)
-            account1.save()
+            teste = account1.balance = account1.balance + value_rec
+            teste.save()
             transfer2 = Transactions(transaction='D', update_account=dest_transfer, dest_account=account1,value=value_rec)
-            dest_transfer = Account.objects.update(pk=op_name,balance=F('balance') + value_rec)
-            dest_transfer.save()
             transfer1 = transfer1.save()
             transfer2 = transfer2.save()
             #return redirect('account/%s' % number)
