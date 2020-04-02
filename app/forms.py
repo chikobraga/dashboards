@@ -7,7 +7,11 @@ class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
         fields = ['transaction','update_account','dest_account','value']
-    transaction = forms.CharField(max_length=1)
+    transaction = forms.CharField(widget=forms.TextInput(
+        attrs={'value': 'W',
+               'class': 'form-control',
+               'placeholder': 'Disabled Input',
+               }))
     update_account = forms.CharField(max_length=30)
     dest_account = forms.CharField(max_length=30)
     value = forms.CharField(max_length=30)
