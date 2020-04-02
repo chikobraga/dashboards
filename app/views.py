@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.db.models import F
+from decimal import Decimal
 from app.models import *
 from app.forms import *
 
@@ -33,7 +34,7 @@ def Account_html(request, number):
             dest_transfer = Account.objects.get(pk=op_name)
 
             transfer1 = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
-            teste = account1.balance = account1.balance + value_rec
+            teste = account1.balance = account1.balance + Decimal(value_rec)
             teste.save()
             transfer2 = Transactions(transaction='D', update_account=dest_transfer, dest_account=account1,value=value_rec)
             transfer1 = transfer1.save()
