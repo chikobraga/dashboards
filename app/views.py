@@ -25,11 +25,11 @@ def Account_html(request, number):
     try:
         if request.method == 'POST':
             form = TransactionForm(request.POST)
-        if form.is_valid():
-            pass
-            return redirect('account/%s' % number)
-        else:
-            form = TransactionForm()
+            if form.is_valid():
+                pass
+                return redirect('account/%s' % number)
+            else:
+                form = TransactionForm()
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
         others_c = Account.objects.all()
