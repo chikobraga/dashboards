@@ -33,7 +33,11 @@
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">{{form.html_name}}</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
+                    {% for list_form in form.update_account %}
+                    {% if form.update_account.value == number.accountnumber %}
                     <input type="text" id="{{form.update_account.id_for_label}}" name="{{form.update_account.html_name}}" value="{{ form.update_account.value }}" class="form-control" readonly="readonly" placeholder="{{ number.accountnumber }}"> -->
+                    {% endif %}
+                    {% endfor %}
                   </div>
                 </div>
                 <div class="form-group">
