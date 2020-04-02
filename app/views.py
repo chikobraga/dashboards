@@ -33,13 +33,13 @@ def Account_html(request, number):
             dest_transfer = Account.objects.get(pk=op_name)
 
             transfer1 = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
-            account1.object.update(balance=F('balance') - value_rec)
+            account1 = Account.object.update(accountnumber=account1,balance=F('balance') - value_rec)
+            account1.save()
             transfer2 = Transactions(transaction='D', update_account=dest_transfer, dest_account=account1,value=value_rec)
-            dest_transfer.object.update(balance=F('balance') + value_rec)
+            dest_transfer = Account.object.update(accountnumber=dest_transfer,balance=F('balance') + value_rec)
+            dest_transfer.save()
             transfer1 = transfer1.save()
             transfer2 = transfer2.save()
-            account1.save()
-            dest_transfer.save()
             #return redirect('account/%s' % number)
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
