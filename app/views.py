@@ -23,7 +23,7 @@ def gentella_html(request):
 
 def Account_html(request, number):
     try:
-        if request.method = 'POST':
+        if request.method == 'POST':
             form = TransactionForm(request.POST)
         if form.is_valid():
             pass
