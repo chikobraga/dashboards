@@ -29,7 +29,7 @@ def Account_html(request, number):
             value_rec = request.POST.get('value')
 
             account1 = Account.objects.get(pk=account)
-            dest_transfer = Account.objects.get(pg=op_name)
+            dest_transfer = Account.objects.get(pk=op_name)
 
             transfer = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
             transfer = form.save()
