@@ -14,11 +14,7 @@ class TransactionForm(ModelForm):
                'disabled': 'disabled',
                 'type': 'checkbox',
                })
-        widget=forms.label(
-            attrs={
-                'class': 'control-label col-md-3 col-sm-3 col-xs-12',
-            }
-        ))
+    )
     update_account = forms.CharField(max_length=30)
     dest_account = forms.CharField(max_length=30)
     value = forms.CharField(max_length=30)
