@@ -28,8 +28,8 @@ def Account_html(request, number):
             if form.is_valid():
                 pass
                 return redirect('account/%s' % number)
-            else:
-                form = TransactionForm()
+
+        form = TransactionForm()
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
         others_c = Account.objects.all()
