@@ -6,7 +6,7 @@ from .models import *
 class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
-        fields = ['Transaction','update_account','dest_account','value']
+        fields = ['transaction','update_account','dest_account','value']
     transaction = forms.CharField(
         widget=forms.TextInput(
         attrs={ 'value': 'W',
