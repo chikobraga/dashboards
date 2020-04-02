@@ -27,7 +27,8 @@ def Account_html(request, number):
             form = TransactionForm(request.POST)
             if form.is_valid():
                 transfer = form.save()
-                return HttpResponse(template.render(context, request))
+                #return redirect('account/%s' % number)
+                HttpResponseRedirect(request.META.get('HTTP_REFERER', 'account/%s' % number))
 
         form = TransactionForm()
         template = loader.get_template('app/plain_page.html')
