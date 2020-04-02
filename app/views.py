@@ -36,7 +36,7 @@ def Account_html(request, number):
             transfer1 = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
             account1.balance -= Decimal(value_rec)
             account1.save()
-            transfer2 = Transactions(transaction='D', update_account=account1, dest_account=dest_transfer,value=value_rec)
+            transfer2 = Transactions(transaction='D', update_account=dest_transfer, dest_account=account1,value=value_rec)
             dest_transfer.balance += Decimal(value_rec)
             dest_transfer.save()
             transfer1 = transfer1.save()
