@@ -32,12 +32,9 @@ def Account_html(request, number):
             dest_transfer = Account.objects.get(pg=op_name)
 
             transfer = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
-
-            if form.is_valid():
-
-                transfer = form.save()
-                #return redirect('account/%s' % number)
-                HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            transfer = form.save()
+            #return redirect('account/%s' % number)
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         form = TransactionForm()
         template = loader.get_template('app/plain_page.html')
