@@ -6,5 +6,4 @@ from .models import *
 class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
-        fields = ['transaction','update_account','dest_account','value']
-    transaction = models.CharField(max_length=1, intial='W')
+        transaction = models.CharField(max_length=1, intial='W')
