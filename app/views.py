@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse
 from app.models import *
-
+from app.forms import *
 
 def index(request):
     context = {}
@@ -23,6 +23,13 @@ def gentella_html(request):
 
 def Account_html(request, number):
     try:
+        if request.method = 'POST':
+            form = TransactionForm(request.POST)
+        if form.is_valid():
+            pass
+            return redirect('account/%s' % number)
+        else:
+            form = TransactionForm()
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
         others_c = Account.objects.all()
@@ -37,6 +44,7 @@ def Account_html(request, number):
         'p_title' : p_title,
         'p_attr' : p_attr,
         'p_info' : p_info,
+        'form' : form
     }
     except Board.DoesNotExist:
         raise Http404
