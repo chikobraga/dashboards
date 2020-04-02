@@ -26,7 +26,7 @@ def Account_html(request, number):
         if request.method == 'POST':
             form = TransactionForm(request.POST)
             if form.is_valid():
-                form.save()
+                transfer = form.save()
                 return redirect('account/%s' % number)
 
         form = TransactionForm()
