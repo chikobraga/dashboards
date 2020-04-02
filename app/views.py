@@ -24,8 +24,17 @@ def gentella_html(request):
 def Account_html(request, number):
     try:
         if request.method == 'POST':
-            form = TransactionForm(request.POST)
+            account = request.POST.get('account')
+            op_name = request.POST.get('op_name')
+            value_rec = request.POST.get('value')
+
+            account1 = Account.objects.get(pk=account)
+            dest_transfer = Account.objects.get(pg=op_name)
+
+            transfer = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
+
             if form.is_valid():
+
                 transfer = form.save()
                 #return redirect('account/%s' % number)
                 HttpResponseRedirect(request.META.get('HTTP_REFERER'))
