@@ -8,11 +8,10 @@ class TransactionForm(ModelForm):
         model = Transactions
         fields = ['transaction','update_account','dest_account','value']
     transaction = forms.CharField(
-        widget=forms.TextInput(
+        widget=forms.TextInput(label='Transaction',
         attrs={ 'value': 'W',
                'class': 'form-control',
                'disabled': 'disabled',
-                'type': 'checkbox',
                })
     )
     update_account = forms.CharField(max_length=30)
