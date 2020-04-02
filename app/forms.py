@@ -15,6 +15,3 @@ class TransactionForm(ModelForm):
                }),
         label='Transaction'
     )
-    update_account = forms.CharField(max_length=30)
-    dest_account = forms.CharField(max_length=30)
-    value = forms.CharField(max_length=30)
