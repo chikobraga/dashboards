@@ -31,7 +31,7 @@
               <form name="maketransfer" method="post" class="form-horizontal form-label-left input_mask">
                 {% csrf_token %}
                 <div class="form-group">
-                  {{ if form.update_account == number.accountnumber }}
+                  {{ form.update_account.label }}
                    {% for list_form in form.update_account %}
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Account</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
