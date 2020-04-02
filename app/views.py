@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from app.models import *
 from app.forms import *
 
@@ -28,7 +28,7 @@ def Account_html(request, number):
             if form.is_valid():
                 transfer = form.save()
                 #return redirect('account/%s' % number)
-                HttpResponseRedirect(request.META.get('HTTP_REFERER', 'account/%s' % number))
+                HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         form = TransactionForm()
         template = loader.get_template('app/plain_page.html')
