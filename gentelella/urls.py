@@ -22,5 +22,5 @@ urlpatterns = [
     # app/ -> Genetelella UI and resources
     url(r'^app/', include('app.urls')),
     url(r'^', include('app.urls')),
-    path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
+    url('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
