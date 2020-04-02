@@ -11,4 +11,5 @@ urlpatterns = [
     # The home page
     path('', views.index, name='login'),
     path('account/<int:number>/', views.Account_html, name='accountnumber'),
+    path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
