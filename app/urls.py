@@ -9,6 +9,7 @@ urlpatterns = [
     re_path(r'^.*\.html', views.gentella_html, name='gentella'),
 
     # The home page
+    path('', include(router.urls)),
     path('', views.index, name='login'),
     path('account/<int:number>/', views.Account_html, name='accountnumber'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
