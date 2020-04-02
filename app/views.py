@@ -50,7 +50,6 @@ def Account_html(request, number):
         'p_title' : p_title,
         'p_attr' : p_attr,
         'p_info' : p_info,
-        'form' : form,
     }
     except Board.DoesNotExist:
         raise Http404
