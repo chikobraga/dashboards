@@ -7,4 +7,3 @@ class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
         fields = ['transaction','update_account','dest_account','value']
-
