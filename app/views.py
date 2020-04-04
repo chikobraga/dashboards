@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, APIView, Response, status, JSONParser
+from rest_framework import viewsets, status
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
