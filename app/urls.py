@@ -13,6 +13,8 @@ urlpatterns = [
     path('account/<int:number>/', views.Account_html, name='accountnumber'),
     path('api/account/', views.AccountList.as_view()),
     path('api/account/<int:pk>/', views.AccountDetail.as_view()),
+    path('api/transaction/', views.AccountList.as_view()),
+    path('api/transaction/<int:pk>/', views.AccountDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
