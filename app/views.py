@@ -113,7 +113,7 @@ class AccountDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class TransactionSerializer(APIView):
+class TransactionList(APIView):
     def get(self, request, format=None):
         transaction = Transactions.objects.all()
         serializer = TransactionSerializer(transaction, many=True)
