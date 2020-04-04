@@ -1,14 +1,15 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from rest_framework import permissions
-from app.serializers import UserSerializer, GroupSerializer
+from rest_framework import viewsets, APIView, Response, status, JSONParser
 from django.shortcuts import render, redirect
 from django.template import loader
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 from django.db.models import F
 from decimal import Decimal
 from app.models import *
 from app.forms import *
+from app.serializers import *
+
 
 def index(request):
     context = {}
@@ -66,6 +67,46 @@ def Account_html(request, number):
     except Board.DoesNotExist:
         raise Http404
     return HttpResponse(template.render(context, request))
+
+
+class AccountList(APIView):
+
+    def get(sekf, request, format=None):
+        account = Account.objects.all()
+        serializer = AccountSerializer(account, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = AccountSerializer(data=request.data)
+        return Response(serializer.data)
+
+class AccountDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return Account.objects.get(pk=pk)
+        except Account.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        account = self.get_object(pk)
+        serializer = AccountSerializer(account)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        account = self.get_object(pk)
+        serializer = AccountSerializer(account, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        account = self.get_object(pk)
+        account.delte()
+        return Response(status=status=HTTP_204_NO_CONTENT)
+
+
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
