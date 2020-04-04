@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -40,15 +39,17 @@ def Account_html(request, number):
             account1 = Account.objects.get(pk=account)
             dest_transfer = Account.objects.get(pk=op_name)
 
-            transfer1 = Transactions(transaction='W',update_account=account1,dest_account=dest_transfer, value=value_rec)
+            transfer1 = Transactions(transaction='W', update_account=account1, dest_account=dest_transfer,
+                                     value=value_rec)
             account1.balance -= Decimal(value_rec)
             account1.save()
-            transfer2 = Transactions(transaction='D', update_account=dest_transfer, dest_account=account1,value=value_rec)
+            transfer2 = Transactions(transaction='D', update_account=dest_transfer, dest_account=account1,
+                                     value=value_rec)
             dest_transfer.balance += Decimal(value_rec)
             dest_transfer.save()
             transfer1 = transfer1.save()
             transfer2 = transfer2.save()
-            #return redirect('account/%s' % number)
+            # return redirect('account/%s' % number)
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         template = loader.get_template('app/plain_page.html')
@@ -59,13 +60,13 @@ def Account_html(request, number):
         p_title = PossessionTitle.objects.filter(owner_title=number)
         transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
-        'number': number,
-        'transacao': transacao,
-        'others_c' : others_c,
-        'p_title' : p_title,
-        'p_attr' : p_attr,
-        'p_info' : p_info,
-    }
+            'number': number,
+            'transacao': transacao,
+            'others_c': others_c,
+            'p_title': p_title,
+            'p_attr': p_attr,
+            'p_info': p_info,
+        }
     except Board.DoesNotExist:
         raise Http404
     return HttpResponse(template.render(context, request))
@@ -80,7 +81,11 @@ class AccountList(APIView):
 
     def post(self, request, format=None):
         serializer = AccountSerializer(data=request.data)
-        return Response(serializer.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
 
 class AccountDetail(APIView):
     def get_object(self, pk):
