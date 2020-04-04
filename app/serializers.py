@@ -14,7 +14,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AccountSerializer(serializers.Serializer):
-    acoount = serializers.BigIntegerField(primary_key=True, editable=True)
+    acoount = serializers.IntegerField(primary_key=True, editable=True)
     name = serializers.CharField(max_length=30)
     balance = serializers.DecimalField(max_digits=10, decimal_places=2)
 
