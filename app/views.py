@@ -103,7 +103,7 @@ class AccountDetail(APIView):
     def delete(self, request, pk, format=None):
         account = self.get_object(pk)
         account.delte()
-        return Response(status=status=HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
