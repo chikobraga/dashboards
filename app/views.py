@@ -74,7 +74,7 @@ def Account_html(request, number):
 
 class AccountList(APIView):
 
-    def get(sekf, request, format=None):
+    def get(self, request, format=None):
         account = Account.objects.all()
         serializer = AccountSerializer(account, many=True)
         return Response(serializer.data)
@@ -111,3 +111,38 @@ class AccountDetail(APIView):
         account = self.get_object(pk)
         account.delte()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class TransactionSerializer(APIView):
+    def get(self, request, format=None):
+        transaction = Transactions.objects.all()
+        serializer = TransactionSerializer(transaction, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = TransactionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class TransactionDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return Transactions.objects.get(pk=pk)
+        except Transactions.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        transaction = self.get_object(pk)
+        serializer = TransactionSerializer(transaction)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        transaction = self.get_object(pk)
+        serializer = TransactionSerializer(transaction, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+

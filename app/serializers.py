@@ -2,19 +2,13 @@ from django.contrib.auth.models import User, Group
 from app.models import *
 from rest_framework import serializers
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ['url', 'name']
-
-
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ['accountnumber', 'name', 'balance']
+
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        models = Transactions
+        fields = ['id', 'transaction', 'update_account','dest_account', 'value']
