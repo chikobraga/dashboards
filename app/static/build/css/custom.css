@@ -2003,59 +2003,6 @@ a.star {
     text-align: left;
     width: 100%
 }
-.button_vermelho {
-  background-color: #C71608;
-  border: 1px;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 30px
-}
-
-.button_verde {
-  background-color: #26B024;
-  border: 1px;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 30px
-}
-.button_azul {
-  background-color: #C71608;
-  border: 1px;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 30px
-}
-.button_roxo {
-  background-color: #C22E91;
-  border: 1px;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 30px
-}
 button,
 .buttons,
 .btn,
