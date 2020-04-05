@@ -14,7 +14,7 @@
 	    <span class="count_top"><i class="fa fa-user"></i> Name: {{ number.name }}</span>
 	    <i class="fa fa-money"></i><div class="count">{{ number.balance }}</div>
     </div>
-    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <div class="col-md-3 col-sm-6 col-xs-8 tile_stats_count">
         <span class="count_top"><i class="fa fa-institution"></i> Patrimonio</span>
         <div class="count">{{ patrimony }}</div>
   </div>
@@ -133,9 +133,7 @@
           <li>
             <div class="block">
               <div class="tags">
-                <a href="" class="tag">
-                  <span>{{ titulos.name_title }}</span>
-                </a>
+                <button type="button" class="btn btn-default">{{ titulos.name_title }}</button>
               </div>
               <div class="block_content">
                 <h2 class="title">
