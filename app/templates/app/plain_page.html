@@ -16,6 +16,10 @@
     </div>
    <!-- /top tiles -->
   </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-institution"></i> Patrimonio</span>
+        <div class="count">123.50</div>
+</div>
   <div class="col-md-6 col-sm-6 col-xs-12">
 <div class="x_panel">
             <div class="x_title">
@@ -94,7 +98,7 @@
             <tr>
               <th scope="row">{{ lista.id }}</th>
               {% if lista.transaction == "D" %}
-              <td class="count green">{{ lisa.dest_account }}</td>
+              <td class="count green">{{ lista.dest_account }}</td>
               <td class="count grenn"><i class="fa fa-usd"></i>{{ lista.value }}</td>
               <td ><span class="label label-success">{{ lista.transaction }}</span></td>
               {% else %}
