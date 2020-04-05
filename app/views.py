@@ -63,12 +63,13 @@ def Account_html(request, number):
         p_title = PossessionTitle.objects.filter(owner_title=number)
         transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
-            'number': naccount,
+            'number': number,
             'transacao': transacao,
             'others_c': others_c,
             'p_title': p_title,
             'p_attr': p_attr,
             'p_info': p_info,
+            'naccount': naccount,
         }
     except Board.DoesNotExist:
         raise Http404
