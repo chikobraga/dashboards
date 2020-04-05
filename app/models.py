@@ -12,7 +12,6 @@ class Account(models.Model):
     accountnumber = models.BigIntegerField(primary_key=True, editable=True)
     name = models.CharField(max_length=30)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
-    patrimony = models.DecimalField(max_digits=10, decimal_places=2)
 
 
 class Transactions(models.Model):

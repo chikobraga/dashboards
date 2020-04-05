@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
-from django.db.models import F
+from django.db.models import F, Sum
 from decimal import Decimal
 from app.models import *
 from app.forms import *
@@ -54,6 +54,9 @@ def Account_html(request, number):
 
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
+        if PossessionTitle.objects.filter(owner_title=number):
+            totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(Sum('value'))
+        number = Account.objects.annotate(patrimony=F('balance') + totalp).get(pk=number)
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
         p_info = InfoPossession.objects.all()
