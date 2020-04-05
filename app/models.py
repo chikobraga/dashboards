@@ -28,11 +28,15 @@ class Transactions(models.Model):
 
 class PossessionTitle(models.Model):
     COLOR = (
-        ('1', 'Preto'),
-        ('2', 'Vemelho'),
-        ('3', 'Azul'),
-        ('4', 'Amarelo'),
-        ('5', 'Verde'),
+        ('1', 'button_preto'),
+        ('2', 'button_vemelho'),
+        ('3', 'button_azul'),
+        ('4', 'button_amarelo'),
+        ('5', 'button_verde'),
+        ('6', 'button_verde1'),
+        ('7', 'button_roxo'),
+        ('8', 'button_laranja'),
+        ('9', 'button_rosa'),
     )
     id = models.AutoField(primary_key=True)
     name_title = models.CharField(max_length=30)
