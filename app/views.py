@@ -63,7 +63,7 @@ def Account_html(request, number):
         p_title = PossessionTitle.objects.filter(owner_title=number)
         transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
-            'naccount': number,
+            'number': naccount,
             'transacao': transacao,
             'others_c': others_c,
             'p_title': p_title,
