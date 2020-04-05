@@ -152,3 +152,4 @@ class TransactionDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
 
+
