@@ -2386,6 +2386,13 @@ a.btn-laranja {
 .open .dropdown-toggle.btn-success {
     background: #169F85
 }
+.btn-vermelho:hover,
+.btn-vermelho:focus,
+.btn-vermelho:active,
+.btn-vermelho.active,
+.open .dropdown-toggle.btn-vermelho {
+    background: #169F85
+}
 .btn-dark {
     color: #E9EDEF;
     background-color: #4B5F71;
