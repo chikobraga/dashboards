@@ -53,17 +53,17 @@ def Account_html(request, number):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         template = loader.get_template('app/plain_page.html')
-        number = Account.objects.get(pk=number)
+        naccount = Account.objects.get(pk=number)
         if PossessionTitle.objects.filter(owner_title=number):
             totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(Sum('value'))
-        number = Account.objects.annotate(patrimony=F('balance') + totalp).get(pk=number)
+        naccount = Account.objects.annotate(patrimony=F('balance') + totalp).get(pk=number)
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
         p_info = InfoPossession.objects.all()
         p_title = PossessionTitle.objects.filter(owner_title=number)
         transacao = Transactions.objects.filter(update_account=number).order_by('id')
         context = {
-            'number': number,
+            'naccount': number,
             'transacao': transacao,
             'others_c': others_c,
             'p_title': p_title,
