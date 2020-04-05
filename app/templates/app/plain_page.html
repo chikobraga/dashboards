@@ -133,11 +133,13 @@
           <li>
             <div class="block">
               <div class="tags">
-                <button type="button" class="btn btn-default">{{ titulos.name_title }}</button>
+                <a href="" class="tag">
+                  <span>{{ titulos.name_title }}</span>
+                </a>
               </div>
               <div class="block_content">
                 <h2 class="title">
-                  <a>{{ titulos.name_title }}</a>
+                  <button type="button" class="btn btn-round btn-vermelho">{{ titulos.name_title }}</button>
                 </h2>
                 {% for atributos in p_attr %}
                 {% if atributos.possession == titulos %}

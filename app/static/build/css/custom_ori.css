@@ -4239,36 +4239,3 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .dataTables_wrapper > .row{
   overflow:auto !important; /*prevent datatables overflowing its container*/
 }
-
-.btn-verde1 {
-    background: #3CFA04;
-    border: 1px solid #169F85
-}
-.btn-laranja {
-    background: #F6C007;
-    border: 1px solid #169F85
-}
-.btn-amarelo {
-    background: #EBF20B;
-    border: 1px solid #169F85
-}
-.btn-preto {
-    background: #474646;
-    border: 1px solid #169F85
-}
-.btn-verde {
-    background: #26B024;
-    border: 1px solid #169F85
-}
-.btn-azul {
-    background: #0B25E1;
-    border: 1px solid #169F85
-}
-.btn-roxo {
-    background: #C22E91;
-    border: 1px solid #169F85
-}
-.btn-vermelho {
-    background: #C71608;
-    border: 1px solid #169F85
-}
