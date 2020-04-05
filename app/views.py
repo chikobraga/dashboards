@@ -55,8 +55,8 @@ def Account_html(request, number):
         template = loader.get_template('app/plain_page.html')
         naccount = Account.objects.get(pk=number)
         if PossessionTitle.objects.filter(owner_title=number):
-            totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(Sum('value'))
-        naccount = Account.objects.annotate(patrimony=F('balance') + totalp).get(pk=number)
+            totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(patrimony=Sum('value'))
+        finalsum = naccount.balance + totalp['patrimony']
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
         p_info = InfoPossession.objects.all()
