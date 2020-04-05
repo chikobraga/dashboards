@@ -38,6 +38,7 @@ class PossessionTitle(models.Model):
     name_title = models.CharField(max_length=30)
     owner_title = models.ForeignKey(Account, related_name='poss_account', null=True, blank=True, on_delete=models.CASCADE)
     color = models.CharField(max_length=1, null=True, blank=True, choices=COLOR)
+    valeu = models.DecimalField(max_digits=10, decimal_places=2)
 
 
 class TitleAttr(models.Model):
