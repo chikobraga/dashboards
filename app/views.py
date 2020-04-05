@@ -53,10 +53,10 @@ def Account_html(request, number):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         template = loader.get_template('app/plain_page.html')
-        naccount = Account.objects.get(pk=number)
+        number = Account.objects.get(pk=number)
         if PossessionTitle.objects.filter(owner_title=number):
             totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(patrimony=Sum('value'))
-        finalsum = naccount.balance + totalp['patrimony']
+        finalsum = number.balance + totalp['patrimony']
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
         p_info = InfoPossession.objects.all()
