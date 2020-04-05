@@ -56,7 +56,9 @@ def Account_html(request, number):
         number = Account.objects.get(pk=number)
         if PossessionTitle.objects.filter(owner_title=number):
             totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(patrimony=Sum('value'))
-        finalsum = number.balance + totalp['patrimony']
+            finalsum = number.balance + totalp['patrimony']
+        else
+            finalsum = number.balance
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
         p_info = InfoPossession.objects.all()
@@ -69,6 +71,7 @@ def Account_html(request, number):
             'p_title': p_title,
             'p_attr': p_attr,
             'p_info': p_info,
+            'patrimony': finalsum,
         }
     except Board.DoesNotExist:
         raise Http404
