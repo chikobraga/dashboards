@@ -96,7 +96,7 @@
               {% if lista.transaction == "D" %}
               {% for nomeaccount in others_c %}
               {% if nomeaccount.accountnumber == lista.dest_account %}
-              <td class="count green">{{ nomeaccount.accountnumber }}</td>
+              <td class="count green">{{ nomeaccount.name }}</td>
               {% endif %}
               {% endfor %}
               <td class="count grenn"><i class="fa fa-usd"></i>{{ lista.value }}</td>
