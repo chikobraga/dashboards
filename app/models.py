@@ -28,8 +28,8 @@ class Transactions(models.Model):
 
 class PossessionTitle(models.Model):
     COLOR = (
-        ('1', 'Preto'),
-        ('2', 'Vemelho'),
+        ('button_verde', 'Preto'),
+        ('button_vermelho', 'Vemelho'),
         ('3', 'Azul'),
         ('4', 'Amarelo'),
         ('5', 'Verde'),
