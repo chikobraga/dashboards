@@ -98,6 +98,7 @@
               {% if nomeaccount.accountnumber == lista.dest_account %}
               <td class="count green">{{ nomeaccount.accountnumber }}</td>
               {% endif %}
+              {% endfor %}
               <td class="count grenn"><i class="fa fa-usd"></i>{{ lista.value }}</td>
               <td ><span class="label label-success">{{ lista.transaction }}</span></td>
               {% else %}
