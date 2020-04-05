@@ -2334,7 +2334,13 @@ select.parsley-error {
 a.btn-success,
 a.btn-primary,
 a.btn-warning,
-a.btn-danger {
+a.btn-danger,
+a.btn-verde,
+a.btn-verde1,
+a.btn-vermelho,
+a.btn-azul,
+a.btn-amarelo,
+a.btn-laranja {
     color: #fff
 }
 .btn-success {
