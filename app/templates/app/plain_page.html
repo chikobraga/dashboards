@@ -94,11 +94,7 @@
             <tr>
               <th scope="row">{{ lista.id }}</th>
               {% if lista.transaction == "D" %}
-              {% for nomeaccount in others_c %}
-              {% if lista.dest_account == nomeaccount.accountnumber  %}
-              <td class="count green">{{ nomeaccount.name }}</td>
-              {% endif %}
-              {% endfor %}
+              <td class="count green">{{ lisa.dest_account }}</td>
               <td class="count grenn"><i class="fa fa-usd"></i>{{ lista.value }}</td>
               <td ><span class="label label-success">{{ lista.transaction }}</span></td>
               {% else %}
