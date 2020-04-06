@@ -116,7 +116,10 @@ class TransactionList(APIView):
     def post(self, request, format=None):
         serializer = TransactionSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            account = request.POST.get('update_account')
+            op_name = request.POST.get('dest_account')
+            value_rec = request.POST.get('value')
+            make_update(account,op_name,value_rec)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
