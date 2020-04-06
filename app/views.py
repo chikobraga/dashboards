@@ -36,7 +36,7 @@ def Account_html(request, number):
             op_name = request.POST.get('op_name')
             value_rec = request.POST.get('value')
 
-            make_update(account,op_name,value_rec)
+            r_update = make_update(account,op_name,value_rec)
             # return redirect('account/%s' % number)
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -144,11 +144,12 @@ class TransactionDetail(APIView):
 def make_update(conta1,conta2,valor):
     account1 = Account.objects.get(pk=conta1)
     dest_transfer = Account.objects.get(pk=conta2)
-    transfer1 = Transactions(transaction='W', update_account=conta1, dest_account=conta2, value=valor)
-    transfer2 = Transactions(transaction='D', update_account=conta2, dest_account=conta1, value=valor)
+    transfer1 = Transactions(transaction='W', update_account=account1, dest_account=dest_transfer, value=valor)
+    transfer2 = Transactions(transaction='D', update_account=dest_transfer, dest_account=account1, value=valor)
     account1.balance -= Decimal(valor)
     dest_transfer.balance += Decimal(valor)
     account1.save()
     dest_transfer.save()
     transfer1 = transfer1.save()
     transfer2 = transfer2.save()
+    return 'OK'
