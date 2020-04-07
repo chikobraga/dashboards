@@ -38,7 +38,7 @@ class PossessionTitle(models.Model):
         ('8', 'button_laranja'),
         ('9', 'button_rosa'),
     )
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, editable=True)
     name_title = models.CharField(max_length=30)
     owner_title = models.ForeignKey(Account, related_name='poss_account', null=True, blank=True, on_delete=models.CASCADE)
     color = models.CharField(max_length=1, null=True, blank=True, choices=COLOR)
@@ -50,7 +50,7 @@ class TitleAttr(models.Model):
         ('1', 'Casa'),
         ('2', 'Hotel'),
     )
-    id = models.AutoField(primary_key=True, editable=True)
+    id = models.AutoField(primary_key=True)
     possession = models.ForeignKey(PossessionTitle, related_name='id_possession', on_delete=models.CASCADE)
     name_attr = models.CharField(max_length=30)
     value = models.DecimalField(max_digits=10, decimal_places=2)
