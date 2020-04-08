@@ -24,3 +24,4 @@ class TitleAttrSerializer(serializers.ModelSerializer):
 class InfoPossessionSerializer(serializers.ModelSerializer):
     class Meta:
         models = InfoPossession
+        fields = ['description', 'value', 'type_info']
