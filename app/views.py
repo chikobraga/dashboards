@@ -145,7 +145,7 @@ class TransactionDetail(APIView):
 
 
 class TitleAttrList(APIView):
-    def get(self, request, format=Nano):
+    def get(self, request, format=None):
         attributs = TitleAttr.objects.all()
         serializer = TitleAttrSerializer(attributs, many=True)
         return Response(serializer.data)
@@ -179,7 +179,7 @@ class TitleAttrDetail(APIView):
 
 
 class InfoPossessionList(APIView):
-    def get(self, request, format=Nano):
+    def get(self, request, format=None):
         info = InfoPossession.objects.all()
         serializer = InfoPossessionSerializer(info, many=True)
         return Response(serializer.data)
@@ -212,7 +212,7 @@ class InfoPossessionDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PossessionTitleList(APIView):
-    def get(self, request, format=Nano):
+    def get(self, request, format=None):
         info = PossessionTitle.objects.all()
         serializer = PossessionTitleSerializer(info, many=True)
         return Response(serializer.data)
