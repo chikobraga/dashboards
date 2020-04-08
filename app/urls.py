@@ -15,6 +15,12 @@ urlpatterns = [
     path('api/account/<int:pk>/', views.AccountDetail.as_view()),
     path('api/transaction/', views.TransactionList.as_view()),
     path('api/transaction/<int:pk>/', views.TransactionDetail.as_view()),
+    path('api/TitleAttrList/', views.TitleAttrList.as_view()),
+    path('api/TitleAttrList/<int:pk>/', views.TitleAttrDetail.as_view()),
+    path('api/InfoPossession/', views.InfoPossessionList.as_view()),
+    path('api/InfoPossession/<int:pk>/', views.InfoPossessionDetail.as_view()),
+    path('api/PossessionTitle/', views.PossessionTitleList.as_view()),
+    path('api/PossessionTitle/<int:pk>/', views.PossessionTitleDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

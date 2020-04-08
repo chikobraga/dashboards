@@ -36,7 +36,7 @@ def Account_html(request, number):
             op_name = request.POST.get('op_name')
             value_rec = request.POST.get('value')
 
-            r_update = make_update(account,op_name,value_rec)
+            r_update = make_update(account, op_name, value_rec)
             # return redirect('account/%s' % number)
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -119,9 +119,10 @@ class TransactionList(APIView):
             account = request.POST.get('update_account')
             op_name = request.POST.get('dest_account')
             value_rec = request.POST.get('value')
-            make_update(account,op_name,value_rec)
+            make_update(account, op_name, value_rec)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class TransactionDetail(APIView):
     def get_object(self, pk):
@@ -143,7 +144,108 @@ class TransactionDetail(APIView):
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
 
 
-def make_update(conta1,conta2,valor):
+class TitleAttrList(APIView):
+    def get(self, request, format=Nano):
+        attributs = TitleAttr.objects.all()
+        serializer = TitleAttrSerializer(attributs, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = TitleAttrSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TitleAttrDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return TitleAttr.objects.get(pk=pk)
+        except TitleAttr.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        titleattr = self.get_object(pk)
+        serializer = TitleAttrSerializer(titleattr)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        titleattr = self.get_object(pk)
+        serializer = TitleAttrSerializer(titleattr, data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class InfoPossessionList(APIView):
+    def get(self, request, format=Nano):
+        info = InfoPossession.objects.all()
+        serializer = InfoPossessionSerializer(info, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = InfoPossessionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class InfoPossessionDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return InfoPossession.objects.get(pk=pk)
+        except InfoPossession.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        info = self.get_object(pk)
+        serializer = InfoPossessionSerializer(info)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        info = self.get_object(pk)
+        serializer = InfoPossessionSerializer(info, data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PossessionTitleList(APIView):
+    def get(self, request, format=Nano):
+        info = PossessionTitle.objects.all()
+        serializer = PossessionTitleSerializer(info, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = PossessionTitleSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class PossessionTitleDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return PossessionTitle.objects.get(pk=pk)
+        except PossessionTitle.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        info = self.get_object(pk)
+        serializer = PossessionTitleSerializer(info)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        info = self.get_object(pk)
+        serializer = PossessionTitleSerializer(info, data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def make_update(conta1, conta2, valor):
     account1 = Account.objects.get(pk=conta1)
     dest_transfer = Account.objects.get(pk=conta2)
     transfer1 = Transactions(transaction='W', update_account=account1, dest_account=dest_transfer, value=valor)
