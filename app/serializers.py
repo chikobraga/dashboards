@@ -22,9 +22,7 @@ class TitleAttrSerializer(serializers.ModelSerializer):
 
 
 class InfoPossessionSerializer(serializers.ModelSerializer):
-
     info_possession = serializers.PrimaryKeyRelatedField(many=True, queryset=InfoPossession.objects.all())
-
     class Meta:
         models = InfoPossession
         fields = ['id', 'description', 'value', 'info_possession', 'type_info']
