@@ -63,7 +63,7 @@ def Account_html(request, number):
             totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(patrimony=Sum('value'))
             finalsum = number.balance + totalp['patrimony']
         else:
-            finalsum = number.balance
+        finalsum = number.balance
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
         p_info = InfoPossession.objects.all()
