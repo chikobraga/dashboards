@@ -189,7 +189,7 @@ class PossessionTitleDetail(APIView):
 
     def put(self, request, pk, format=None):
         posse = self.get_object(pk)
-        serializer = TransactionSerializer(posse, data=request.data)
+        serializer = PossessionTitleSerializer(posse, data=request.data)
         if serializer.is_valid():
             return Response(serializer.data)
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
