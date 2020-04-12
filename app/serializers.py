@@ -29,4 +29,4 @@ class TitleAttrSerializer(serializers.ModelSerializer):
 class PossessionTitleSerializer(serializers.ModelSerializer):
     class Meta:
         model = PossessionTitle
-        fields = ['numberid', 'owner_title']
+        fields = ['owner_title']

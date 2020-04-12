@@ -168,17 +168,31 @@ class PossessionTitleList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        serializer = PossessionTitleSerializer(data=request.data)
+        serializer = PossessionTitleSerializer(data=request.data, partial=True)
         if serializer.is_valid():
-            account = request.POST.get('owner_title')
-            posse = request.POST.get('numberid')
-            n_account = Account.objects.get(pk=account)
-            o_posse = PossessionTitle.objects.get(pk=posse)
-            o_posse.owner_title = n_account
-            o_posse.save()
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+class PossessionTitleDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return PossessionTitle.objects.get(pk=pk)
+        except Transactions.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        posse = self.get_object(pk)
+        serializer = PossessionTitleSerializer(posse)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        posse = self.get_object(pk)
+        serializer = TransactionSerializer(posse, data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
 
 class TitleAttrList(APIView):
     def get(self, request, format=None):
