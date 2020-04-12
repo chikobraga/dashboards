@@ -1,3 +1,5 @@
+from django.contrib.auth import (login as auth_login,  authenticate)
+from django.core.urlresolvers import reverse
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,7 +15,19 @@ from app.serializers import *
 
 
 def index(request):
-    context = {}
+    if request.method == 'POST':
+        _username = request.POST['username']
+        _password = request.POST['password']
+        user = authenticate(username=_username,password=_password)
+        if user is not None:
+            auth_login(request, user)
+            return HttpResponseRedirect(reverse('index.html'))
+        else:
+            _message = 'Failed'
+    else:
+        _message = 'Invalid login, please try again'
+
+    context = {'message': _message }
     template = loader.get_template('app/login.html')
     return HttpResponse(template.render(context, request))
 
