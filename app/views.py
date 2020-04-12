@@ -170,7 +170,12 @@ class PossessionTitleList(APIView):
     def post(self, request, format=None):
         serializer = PossessionTitleSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            account = request.POST.get('owner_title')
+            posse = request.POST.get('numberid')
+            n_account = Account.objects.get(pk=account)
+            o_posse = PossessionTitle.objects.get(pk=posse)
+            o_posse.owner_title = n_account
+            o_posse.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
