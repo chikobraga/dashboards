@@ -211,8 +211,8 @@ def make_update(conta1, conta2, valor):
 
 def update_posse(request):
     if request.method == 'GET':
-        number = request.GET.get['accountnumber']
-        posse = request.GET.get['possession']
+        number = request.get['accountnumber']
+        posse = request.get['possession']
         accountobj = Account.objects.get(pk=number)
         possession = PossessionTitle.objects.get(pk=posse)
         possession.owner_title = accountobj
