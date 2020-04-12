@@ -191,6 +191,7 @@ class PossessionTitleDetail(APIView):
         posse = self.get_object(pk)
         serializer = PossessionTitleSerializer(posse, data=request.data)
         if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data)
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
 
