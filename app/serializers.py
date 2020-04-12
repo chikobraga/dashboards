@@ -17,7 +17,7 @@ class TransactionSerializer(serializers.ModelSerializer):
 
 class InfoPossessionSerializer(serializers.ModelSerializer):
     class Meta:
-        models = InfoPossession
+        model = InfoPossession
         fields = ['id', 'description', 'info_possession', 'value', 'type_info']
 
 
@@ -25,3 +25,8 @@ class TitleAttrSerializer(serializers.ModelSerializer):
     class Meta:
         model = TitleAttr
         fields = ['id', 'possession', 'name_attr', 'value', 'type_info']
+
+class PossessionTitleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PossessionTitleSerializer
+        fields = ['numberid', 'owner_title']

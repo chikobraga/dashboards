@@ -18,6 +18,6 @@ urlpatterns = [
     path('api/transaction/<int:pk>/', views.TransactionDetail.as_view()),
     path('api/attr/', views.TitleAttrList.as_view()),
     path('api/attr/<int:pk>/', views.TitleAttrDetail.as_view()),
-    path('api/infop/', views.update_posse, name='infop'),
+    path('api/infop/', views.PossessionTitleList()),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

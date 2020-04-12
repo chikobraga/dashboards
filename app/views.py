@@ -161,6 +161,18 @@ class TransactionDetail(APIView):
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
 
 
+class PossessionTitleList(APIView):
+    def get(self, request, format=None):
+        posse = PossessionTitle.objects.all()
+        serializer = PossessionTitleSerializer(posse, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = PossessionTitleSerializer(data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class TitleAttrList(APIView):
     def get(self, request, format=None):
         attributs = TitleAttr.objects.all()
@@ -207,16 +219,3 @@ def make_update(conta1, conta2, valor):
     transfer1 = transfer1.save()
     transfer2 = transfer2.save()
     return 'OK'
-
-
-def update_posse(request):
-    if request.method == 'GET':
-        number = request.get['accountnumber']
-        posse = request.get['possession']
-        accountobj = Account.objects.get(pk=number)
-        possession = PossessionTitle.objects.get(pk=posse)
-        possession.owner_title = accountobj
-        possession.save()
-        return HttpResponse(status=201)
-    else:
-        return HttpResponse(status=400)
