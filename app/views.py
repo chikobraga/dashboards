@@ -1,4 +1,4 @@
-from django.contrib.auth import (login as auth_login,  authenticate)
+from django.contrib.auth import (login as auth_login, authenticate)
 from django.urls import reverse
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
@@ -18,10 +18,10 @@ def index(request):
     if request.method == 'POST':
         _username = request.POST['username']
         _password = request.POST['password']
-        user = authenticate(username=_username,password=_password)
+        user = authenticate(username=_username, password=_password)
         user_id = User.objects.get(username=_username)
         numberaccount = Account.objects.get(user=user_id)
-        account = "account/"+str(numberaccount.accountnumber)+"/"
+        account = "account/" + str(numberaccount.accountnumber) + "/"
         if user is not None:
             auth_login(request, user)
             return HttpResponseRedirect(account)
@@ -30,7 +30,7 @@ def index(request):
     else:
         _message = 'Invalid login, please try again'
 
-    context = {'message': _message }
+    context = {'message': _message}
     template = loader.get_template('app/login.html')
     return HttpResponse(template.render(context, request))
 
@@ -207,3 +207,16 @@ def make_update(conta1, conta2, valor):
     transfer1 = transfer1.save()
     transfer2 = transfer2.save()
     return 'OK'
+
+
+def update_posse(request):
+    if request.method == 'POST':
+        number = request.POST.get['accountnumber']
+        posse = request.POST.get['possession']
+        accountobj = Account.objects.get(pk=number)
+        possession = PossessionTitle.objects.get(pk=posse)
+        possession.owner_title = accountobj
+        possession.save()
+        return HttpResponse(status=201)
+    else:
+        return HttpResponse(status=400)
