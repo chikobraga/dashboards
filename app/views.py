@@ -1,5 +1,5 @@
 from django.contrib.auth import (login as auth_login,  authenticate)
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
