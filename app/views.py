@@ -19,9 +19,12 @@ def index(request):
         _username = request.POST['username']
         _password = request.POST['password']
         user = authenticate(username=_username,password=_password)
+        user_id = User.objects.get(username=_username)
+        numberaccount = Account.objects.get(user=user_id)
+        account = "account/"+numberaccount.accountnumber+"/"
         if user is not None:
             auth_login(request, user)
-            return HttpResponseRedirect(reverse('index.html'))
+            return HttpResponseRedirect(reverse(account))
         else:
             _message = 'Failed'
     else:
