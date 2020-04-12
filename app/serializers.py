@@ -28,5 +28,5 @@ class TitleAttrSerializer(serializers.ModelSerializer):
 
 class PossessionTitleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PossessionTitleSerializer
+        model = PossessionTitle
         fields = ['numberid', 'owner_title']
