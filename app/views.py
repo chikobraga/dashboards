@@ -47,42 +47,39 @@ def gentella_html(request):
 
 
 def Account_html(request, number):
-    if request.user.is_authenticated():
-        try:
-            if request.method == 'POST':
-                account = request.POST.get('account')
-                op_name = request.POST.get('op_name')
-                value_rec = request.POST.get('value')
+    try:
+        if request.method == 'POST':
+            account = request.POST.get('account')
+            op_name = request.POST.get('op_name')
+            value_rec = request.POST.get('value')
 
-                r_update = make_update(account, op_name, value_rec)
-                # return redirect('account/%s' % number)
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            r_update = make_update(account, op_name, value_rec)
+            # return redirect('account/%s' % number)
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-            template = loader.get_template('app/plain_page.html')
-            number = Account.objects.get(pk=number)
-            if PossessionTitle.objects.filter(owner_title=number):
-                totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(patrimony=Sum('value'))
-                finalsum = number.balance + totalp['patrimony']
-            else:
-                finalsum = number.balance
-            others_c = Account.objects.all()
-            p_attr = TitleAttr.objects.all()
-            p_info = InfoPossession.objects.all()
-            p_title = PossessionTitle.objects.filter(owner_title=number)
-            transacao = Transactions.objects.filter(update_account=number).order_by('id')
-            context = {
-                'number': number,
-                'transacao': transacao,
-                'others_c': others_c,
-                'p_title': p_title,
-                'p_attr': p_attr,
-                'p_info': p_info,
-                'patrimony': finalsum,
-            }
-        except Board.DoesNotExist:
-            raise Http404
-    else:
-        return HttpResponseRedirect('/')
+        template = loader.get_template('app/plain_page.html')
+        number = Account.objects.get(pk=number)
+        if PossessionTitle.objects.filter(owner_title=number):
+            totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(patrimony=Sum('value'))
+            finalsum = number.balance + totalp['patrimony']
+        else:
+            finalsum = number.balance
+        others_c = Account.objects.all()
+        p_attr = TitleAttr.objects.all()
+        p_info = InfoPossession.objects.all()
+        p_title = PossessionTitle.objects.filter(owner_title=number)
+        transacao = Transactions.objects.filter(update_account=number).order_by('id')
+        context = {
+            'number': number,
+            'transacao': transacao,
+            'others_c': others_c,
+            'p_title': p_title,
+            'p_attr': p_attr,
+            'p_info': p_info,
+            'patrimony': finalsum,
+        }
+    except Board.DoesNotExist:
+        raise Http404
     return HttpResponse(template.render(context, request))
 
 
