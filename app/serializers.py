@@ -12,17 +12,16 @@ class AccountSerializer(serializers.ModelSerializer):
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transactions
-        fields = ['id', 'transaction', 'update_account','dest_account', 'value']
-
-
-class TitleAttrSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TitleAttr
-        fields = ['id', 'possession', 'name_attr', 'value', 'type_info']
+        fields = ['id', 'transaction', 'update_account', 'dest_account', 'value']
 
 
 class InfoPossessionSerializer(serializers.ModelSerializer):
     class Meta:
         models = InfoPossession
         fields = ['id', 'description', 'info_possession', 'value', 'type_info']
-        depth = 1
+
+
+class TitleAttrSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TitleAttr
+        fields = ['id', 'possession', 'name_attr', 'value', 'type_info']
