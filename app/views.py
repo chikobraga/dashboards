@@ -22,7 +22,6 @@ def index(request):
         user_id = User.objects.get(username=_username)
         numberaccount = Account.objects.get(user=user_id)
         account = "account/"+str(numberaccount.accountnumber)+"/"
-
         if user is not None:
             auth_login(request, user)
             return HttpResponseRedirect(account)
