@@ -10,7 +10,6 @@ urlpatterns = [
 
     # The home page
     path('', views.index, name='login'),
-    path('usuarios/', include('django.contrib.auth.urls')),
     path('account/<int:number>/', views.Account_html, name='accountnumber'),
     path('api/account/', views.AccountList.as_view()),
     path('api/account/<int:pk>/', views.AccountDetail.as_view()),
