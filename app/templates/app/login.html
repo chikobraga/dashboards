@@ -21,6 +21,11 @@
           <form method="post">
             {% csrf_token %}
             <h1>Login Form</h1>
+            {% if mensage is not None %}
+            <div class="alert alert-primary" role="alert">
+              {% message %}
+            </div>
+            {% endif %}
             <div>
               <input type="text" class="form-control" name="username" placeholder="Username" required="" />
             </div>

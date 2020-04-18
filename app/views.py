@@ -28,7 +28,7 @@ def index(request):
         else:
             _message = 'Failed'
     else:
-        _message = 'Invalid login, please try again'
+        _message = 'Invalid login or password, please try again'
 
     context = {'message': _message}
     template = loader.get_template('app/login.html')
