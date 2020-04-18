@@ -99,7 +99,7 @@
               <th scope="row">{{ lista.id }}</th>
               {% if lista.transaction == "D" %}
               {% for contas in others_c %}
-                {% if lista.dest_account == lista.dest_account %}
+                {% if contas.accountnumber == lista.dest_account %}
               <!--<td class="count green">{{ lista.dest_account }}</td> -->
               <td class="count green">{{ contas.name }}</td>
                 {{ % endif %}
