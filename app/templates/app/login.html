@@ -20,9 +20,9 @@
         <section class="login_content">
           <form method="post">
             {% csrf_token %}
-            <h1>Login Form</h1>
+            <h1>Login</h1>
             {% if message is not None %}
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-warning" role="alert">
               {{ message }}
             </div>
             {% endif %}
