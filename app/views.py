@@ -19,14 +19,14 @@ def index(request):
         _username = request.POST['username']
         _password = request.POST['password']
         user = authenticate(username=_username, password=_password)
-        user_id = User.objects.get(username=_username)
+        # user_id = User.objects.get(username=_username)
         numberaccount = Account.objects.get(user=user_id)
         account = "account/" + str(numberaccount.accountnumber) + "/"
         if user is not None:
             auth_login(request, user)
             return HttpResponseRedirect(account)
         else:
-            _message = 'Failed'
+            _message = 'Invalid login or password, please try again'
     else:
         _message = 'Invalid login or password, please try again'
 
@@ -194,6 +194,7 @@ class PossessionTitleDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+
 
 class TitleAttrList(APIView):
     def get(self, request, format=None):
