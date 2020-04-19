@@ -48,7 +48,7 @@ def gentella_html(request):
 
 def Account_html(request, number):
     try:
-        if request.method == 'POST':
+        if request.method == 'POST' and request.POST.get('name') == 'maketransfer':
             account = request.POST.get('account')
             op_name = request.POST.get('op_name')
             value_rec = request.POST.get('value')
