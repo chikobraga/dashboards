@@ -53,9 +53,17 @@ def Account_html(request, number):
             account = request.POST.get('account')
             op_name = request.POST.get('op_name')
             value_rec = request.POST.get('value')
-            if name == 'ok':
+            ti_name = request.POST.get('ti_name')
+            op_name_ti = request.POST.get('op_name_ti')
+            if name == 'transfer':
                 r_update = make_update(account, op_name, value_rec)
                 # return redirect('account/%s' % number)
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            elif name == 'titulo':
+                numberac = Account.objects.get(pk=op_name_ti)
+                titulo = PossessionTitle.objects.get(pk=ti_name)
+                titulo.owner_title = numberac
+                titulo.save()
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         template = loader.get_template('app/plain_page.html')
