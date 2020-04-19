@@ -53,7 +53,7 @@ def Account_html(request, number):
             account = request.POST.get('account')
             op_name = request.POST.get('op_name')
             value_rec = request.POST.get('value')
-            if name == 'maketransfer':
+            if 'maketransfer' == request.form:
                 r_update = make_update(account, op_name, value_rec)
                 # return redirect('account/%s' % number)
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
