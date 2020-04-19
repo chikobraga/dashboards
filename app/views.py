@@ -55,7 +55,7 @@ def Account_html(request, number):
             value_rec = request.POST.get('value')
             if name == 'maketransfer':
                 r_update = make_update(account, op_name, value_rec)
-            # return redirect('account/%s' % number)
+                # return redirect('account/%s' % number)
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         template = loader.get_template('app/plain_page.html')
