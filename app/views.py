@@ -48,14 +48,15 @@ def gentella_html(request):
 
 def Account_html(request, number):
     try:
-        if request.method == 'POST' and request.POST.get('name') == 'maketransfer':
+        if request.method == 'POST':
+            name = request.POST.get('name')
             account = request.POST.get('account')
             op_name = request.POST.get('op_name')
             value_rec = request.POST.get('value')
-
-            r_update = make_update(account, op_name, value_rec)
+            if name == 'maketransfer':
+                r_update = make_update(account, op_name, value_rec)
             # return redirect('account/%s' % number)
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         template = loader.get_template('app/plain_page.html')
         number = Account.objects.get(pk=number)
