@@ -1,0 +1,247 @@
+Watching for file changes with StatReloader
+[26/Jan/2024 03:52:40] "GET / HTTP/1.1" 200 4867
+[26/Jan/2024 03:52:48] "GET /admin/ HTTP/1.1" 302 0
+[26/Jan/2024 03:52:48] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2369
+[26/Jan/2024 03:52:52] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[26/Jan/2024 03:52:52] "GET /admin/ HTTP/1.1" 200 7576
+[26/Jan/2024 03:52:56] "GET /admin/auth/user/ HTTP/1.1" 200 9958
+[26/Jan/2024 03:52:56] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:52:56] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:52:59] "GET /admin/auth/user/add/ HTTP/1.1" 200 8621
+[26/Jan/2024 03:52:59] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 03:53:16] "POST /admin/auth/user/add/ HTTP/1.1" 302 0
+[26/Jan/2024 03:53:16] "GET /admin/auth/user/3/change/ HTTP/1.1" 200 18470
+[26/Jan/2024 03:53:16] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:53:16] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:53:21] "GET /admin/app/account/ HTTP/1.1" 200 7333
+[26/Jan/2024 03:53:21] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:53:21] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:53:25] "GET /admin/app/account/add/ HTTP/1.1" 200 9008
+[26/Jan/2024 03:53:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 03:53:42] "POST /admin/app/account/add/ HTTP/1.1" 302 0
+[26/Jan/2024 03:53:42] "GET /admin/app/account/ HTTP/1.1" 200 7789
+[26/Jan/2024 03:53:42] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:53:42] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:53:51] "GET /admin/app/account/8008001/change/ HTTP/1.1" 200 9355
+[26/Jan/2024 03:53:51] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:53:51] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:53:54] "GET /admin/app/infopossession/ HTTP/1.1" 200 7402
+[26/Jan/2024 03:53:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:53:54] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:53:56] "GET /admin/app/infopossession/1/change/ HTTP/1.1" 200 9482
+[26/Jan/2024 03:53:56] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 03:54:01] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7416
+[26/Jan/2024 03:54:01] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:54:01] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:54:03] "GET /admin/app/possessiontitle/11/change/ HTTP/1.1" 200 10307
+[26/Jan/2024 03:54:03] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 03:54:10] "POST /admin/app/possessiontitle/11/change/ HTTP/1.1" 302 0
+[26/Jan/2024 03:54:10] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7654
+[26/Jan/2024 03:54:10] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:54:10] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:54:15] "GET / HTTP/1.1" 200 4867
+[26/Jan/2024 03:54:24] "POST / HTTP/1.1" 302 0
+[26/Jan/2024 03:54:24] "GET /account/800800/ HTTP/1.1" 200 16483
+[26/Jan/2024 03:54:25] "GET /admin/ HTTP/1.1" 302 0
+[26/Jan/2024 03:54:25] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2214
+[26/Jan/2024 03:54:25] "GET /static/admin/css/base.css HTTP/1.1" 200 19513
+[26/Jan/2024 03:54:25] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2271
+[26/Jan/2024 03:54:25] "GET /static/admin/css/responsive.css HTTP/1.1" 200 18545
+[26/Jan/2024 03:54:25] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 1360
+[26/Jan/2024 03:54:25] "GET /static/admin/css/login.css HTTP/1.1" 200 939
+[26/Jan/2024 03:54:25] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[26/Jan/2024 03:54:25] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+[26/Jan/2024 03:54:25] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+[26/Jan/2024 03:54:27] "GET /account/800800/ HTTP/1.1" 200 16483
+[26/Jan/2024 03:58:21] "GET / HTTP/1.1" 200 4867
+[26/Jan/2024 03:58:29] "GET /admin/ HTTP/1.1" 302 0
+[26/Jan/2024 03:58:29] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2369
+[26/Jan/2024 03:58:34] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[26/Jan/2024 03:58:34] "GET /admin/ HTTP/1.1" 200 8488
+[26/Jan/2024 03:58:40] "GET /admin/app/infopossession/ HTTP/1.1" 200 7402
+[26/Jan/2024 03:58:40] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:58:40] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:58:42] "GET /admin/app/infopossession/1/change/ HTTP/1.1" 200 9482
+[26/Jan/2024 03:58:42] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 03:58:42] "GET /static/admin/css/widgets.css HTTP/1.1" 200 11097
+[26/Jan/2024 03:58:57] "GET /account/800800/ HTTP/1.1" 200 16483
+[26/Jan/2024 03:59:04] "GET /account/800800/ HTTP/1.1" 200 16483
+[26/Jan/2024 03:59:22] "POST /account/800800/ HTTP/1.1" 302 0
+[26/Jan/2024 03:59:22] "GET /account/800800/ HTTP/1.1" 200 14847
+[26/Jan/2024 03:59:40] "GET /admin/app/titleattr/ HTTP/1.1" 200 7347
+[26/Jan/2024 03:59:40] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:59:40] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:59:41] "GET /admin/app/titleattr/1/change/ HTTP/1.1" 200 9408
+[26/Jan/2024 03:59:41] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 03:59:45] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7416
+[26/Jan/2024 03:59:45] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:59:45] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:59:46] "GET /admin/app/possessiontitle/11/change/ HTTP/1.1" 200 10307
+[26/Jan/2024 03:59:46] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 03:59:52] "POST /admin/app/possessiontitle/11/change/ HTTP/1.1" 302 0
+[26/Jan/2024 03:59:52] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7654
+[26/Jan/2024 03:59:52] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 03:59:52] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 03:59:54] "GET /admin/app/possessiontitle/11/change/ HTTP/1.1" 200 10307
+[26/Jan/2024 03:59:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:00:11] "GET /admin/app/titleattr/ HTTP/1.1" 200 7347
+[26/Jan/2024 04:00:11] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:00:11] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:00:12] "GET /admin/app/titleattr/1/change/ HTTP/1.1" 200 9408
+[26/Jan/2024 04:00:13] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:00:24] "POST /admin/app/titleattr/1/change/ HTTP/1.1" 302 0
+[26/Jan/2024 04:00:25] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9361
+[26/Jan/2024 04:00:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:00:25] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:00:45] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:00:45] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9359
+[26/Jan/2024 04:00:45] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:00:45] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:01:06] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:01:06] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9359
+[26/Jan/2024 04:01:06] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:01:06] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:01:23] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:01:23] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9359
+[26/Jan/2024 04:01:23] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:01:23] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:01:38] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:01:38] "GET /admin/app/titleattr/ HTTP/1.1" 200 8444
+[26/Jan/2024 04:01:38] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:01:38] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:01:45] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7416
+[26/Jan/2024 04:01:45] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:01:45] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:01:49] "GET /admin/app/possessiontitle/add/ HTTP/1.1" 200 9959
+[26/Jan/2024 04:01:49] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:03:02] "POST /admin/app/possessiontitle/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:03:02] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7888
+[26/Jan/2024 04:03:02] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:03:02] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:03:05] "GET /admin/app/titleattr/ HTTP/1.1" 200 8228
+[26/Jan/2024 04:03:05] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:03:07] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9164
+[26/Jan/2024 04:03:07] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:03:07] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:03:25] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:03:25] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9418
+[26/Jan/2024 04:03:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:03:25] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:04:25] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:04:25] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9418
+[26/Jan/2024 04:04:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:04:25] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:04:44] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:04:44] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9418
+[26/Jan/2024 04:04:44] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:04:44] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:05:02] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:05:02] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9418
+[26/Jan/2024 04:05:02] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:05:02] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:05:18] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:05:18] "GET /admin/app/titleattr/add/ HTTP/1.1" 200 9420
+[26/Jan/2024 04:05:18] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:05:18] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:05:31] "POST /admin/app/titleattr/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:05:31] "GET /admin/app/titleattr/ HTTP/1.1" 200 9775
+[26/Jan/2024 04:05:31] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:05:31] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:05:33] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7652
+[26/Jan/2024 04:05:33] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:05:33] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:05:35] "GET /admin/app/infopossession/ HTTP/1.1" 200 7402
+[26/Jan/2024 04:05:35] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:05:38] "GET /admin/app/infopossession/1/change/ HTTP/1.1" 200 9541
+[26/Jan/2024 04:05:38] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:05:43] "GET /admin/app/infopossession/ HTTP/1.1" 200 7402
+[26/Jan/2024 04:05:43] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:05:43] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:05:49] "GET /admin/app/infopossession/ HTTP/1.1" 200 7402
+[26/Jan/2024 04:05:49] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:05:50] "GET /admin/app/infopossession/1/change/ HTTP/1.1" 200 9541
+[26/Jan/2024 04:05:50] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:06:04] "GET /admin/app/possessiontitle/ HTTP/1.1" 200 7652
+[26/Jan/2024 04:06:04] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:06:04] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:06:06] "GET /admin/app/infopossession/ HTTP/1.1" 200 7402
+[26/Jan/2024 04:06:06] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[26/Jan/2024 04:06:13] "GET /account/800800/ HTTP/1.1" 200 19886
+[26/Jan/2024 04:07:22] "GET /admin/app/infopossession/1/change/ HTTP/1.1" 200 9541
+[26/Jan/2024 04:07:22] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:07:22] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:07:48] "POST /admin/app/infopossession/1/change/ HTTP/1.1" 302 0
+[26/Jan/2024 04:07:48] "GET /admin/app/infopossession/add/ HTTP/1.1" 200 9499
+[26/Jan/2024 04:07:48] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:07:48] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:08:08] "POST /admin/app/infopossession/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:08:08] "GET /admin/app/infopossession/ HTTP/1.1" 200 7864
+[26/Jan/2024 04:08:08] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:08:08] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:08:12] "GET /account/800800/ HTTP/1.1" 200 20173
+[26/Jan/2024 04:08:22] "GET /admin/app/infopossession/add/ HTTP/1.1" 200 9223
+[26/Jan/2024 04:08:22] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:08:22] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:08:43] "POST /admin/app/infopossession/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:08:43] "GET /admin/app/infopossession/ HTTP/1.1" 200 8094
+[26/Jan/2024 04:08:43] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:08:43] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:08:52] "GET /account/800800/ HTTP/1.1" 200 20455
+[26/Jan/2024 04:10:30] "GET /admin/app/infopossession/add/ HTTP/1.1" 200 9223
+[26/Jan/2024 04:10:30] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:10:30] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:10:52] "POST /admin/app/infopossession/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:10:52] "GET /admin/app/infopossession/add/ HTTP/1.1" 200 9497
+[26/Jan/2024 04:10:52] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:10:52] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:11:08] "POST /admin/app/infopossession/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:11:08] "GET /admin/app/infopossession/add/ HTTP/1.1" 200 9497
+[26/Jan/2024 04:11:08] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:11:08] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:11:21] "POST /admin/app/infopossession/add/ HTTP/1.1" 302 0
+[26/Jan/2024 04:11:21] "GET /admin/app/infopossession/ HTTP/1.1" 200 8784
+[26/Jan/2024 04:11:21] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:11:22] "GET /favicon.ico HTTP/1.1" 404 6303
+[26/Jan/2024 04:11:29] "GET /admin/app/transactions/ HTTP/1.1" 200 6195
+[26/Jan/2024 04:11:29] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+Not Found: /favicon.ico
+[26/Jan/2024 04:11:29] "GET /favicon.ico HTTP/1.1" 404 6303
