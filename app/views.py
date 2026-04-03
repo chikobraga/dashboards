@@ -1,49 +1,53 @@
-from django.contrib.auth import (login as auth_login, authenticate)
-from django.urls import reverse
-from rest_framework import viewsets, status
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.shortcuts import render, redirect
-from django.template import loader
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from django.views.decorators.csrf import csrf_exempt
-from django.db.models import F, Sum
 from decimal import Decimal
-from app.models import *
-from app.forms import *
-from app.serializers import *
+
+from django.contrib.auth import authenticate, login as auth_login
+from django.db import transaction
+from django.db.models import Sum
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render
+from django.template.exceptions import TemplateDoesNotExist
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from app.models import Account, InfoPossession, PossessionTitle, TitleAttr, Transactions
+from app.serializers import (
+    AccountSerializer,
+    InfoPossessionSerializer,
+    PossessionTitleSerializer,
+    TitleAttrSerializer,
+    TransactionSerializer,
+)
 
 
 def index(request):
     if request.method == 'POST':
-        _username = request.POST['username']
-        _password = request.POST['password']
-        user = authenticate(username=_username, password=_password)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
         if user is not None:
-            user_id = User.objects.get(username=_username)
-            numberaccount = Account.objects.get(user=user_id)
-            account = "account/" + str(numberaccount.accountnumber) + "/"
+            numberaccount = Account.objects.get(user=user)
+            account = f'account/{numberaccount.accountnumber}/'
             auth_login(request, user)
             return HttpResponseRedirect(account)
-        else:
-            _message = 'Invalid login or password, please try again'
+        message = 'Invalid login or password, please try again'
     else:
-        _message = ''
+        message = ''
 
-    context = {'message': _message}
-    template = loader.get_template('app/login.html')
-    return HttpResponse(template.render(context, request))
+    return render(request, 'app/login.html', {'message': message})
 
 
 def gentella_html(request):
     context = {}
+
     # The template to be loaded as per gentelella.
     # All resource paths for gentelella end in .html.
-
-    # Pick out the html file name from the url. And load that template.
     load_template = request.path.split('/')[-1]
-    template = loader.get_template('app/' + load_template)
-    return HttpResponse(template.render(context, request))
+
+    try:
+        return render(request, f'app/{load_template}', context)
+    except TemplateDoesNotExist as exc:
+        raise Http404 from exc
 
 
 def Account_html(request, number):
@@ -56,30 +60,28 @@ def Account_html(request, number):
             ti_name = request.POST.get('ti_name')
             op_name_ti = request.POST.get('op_name_ti')
             if name == 'transfer':
-                r_update = make_update(account, op_name, value_rec)
-                # return redirect('account/%s' % number)
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-            elif name == 'titulo':
+                make_update(account, op_name, value_rec)
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', f'/account/{number}/'))
+            if name == 'titulo':
                 numberac = Account.objects.get(pk=op_name_ti)
                 titulo = PossessionTitle.objects.get(pk=ti_name)
                 titulo.owner_title = numberac
                 titulo.save()
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', f'/account/{number}/'))
 
-        template = loader.get_template('app/plain_page.html')
-        number = Account.objects.get(pk=number)
-        if PossessionTitle.objects.filter(owner_title=number):
-            totalp = PossessionTitle.objects.filter(owner_title=number).aggregate(patrimony=Sum('value'))
-            finalsum = number.balance + totalp['patrimony']
+        account = Account.objects.get(pk=number)
+        if PossessionTitle.objects.filter(owner_title=account).exists():
+            totalp = PossessionTitle.objects.filter(owner_title=account).aggregate(patrimony=Sum('value'))
+            finalsum = account.balance + totalp['patrimony']
         else:
-            finalsum = number.balance
+            finalsum = account.balance
         others_c = Account.objects.all()
         p_attr = TitleAttr.objects.all()
         p_info = InfoPossession.objects.all()
-        p_title = PossessionTitle.objects.filter(owner_title=number)
-        transacao = Transactions.objects.filter(update_account=number).order_by('id')
+        p_title = PossessionTitle.objects.filter(owner_title=account)
+        transacao = Transactions.objects.filter(update_account=account).order_by('id')
         context = {
-            'number': number,
+            'number': account,
             'transacao': transacao,
             'others_c': others_c,
             'p_title': p_title,
@@ -87,13 +89,12 @@ def Account_html(request, number):
             'p_info': p_info,
             'patrimony': finalsum,
         }
-    except Board.DoesNotExist:
-        raise Http404
-    return HttpResponse(template.render(context, request))
+    except Account.DoesNotExist as exc:
+        raise Http404 from exc
+    return render(request, 'app/plain_page.html', context)
 
 
 class AccountList(APIView):
-
     def get(self, request, format=None):
         account = Account.objects.all()
         serializer = AccountSerializer(account, many=True)
@@ -104,7 +105,7 @@ class AccountList(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AccountDetail(APIView):
@@ -125,28 +126,29 @@ class AccountDetail(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
         account = self.get_object(pk)
-        account.delte()
+        account.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class TransactionList(APIView):
     def get(self, request, format=None):
-        transaction = Transactions.objects.all()
-        serializer = TransactionSerializer(transaction, many=True)
+        transaction_list = Transactions.objects.all()
+        serializer = TransactionSerializer(transaction_list, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
         serializer = TransactionSerializer(data=request.data)
         if serializer.is_valid():
-            account = request.POST.get('update_account')
-            op_name = request.POST.get('dest_account')
-            value_rec = request.POST.get('value')
-            make_update(account, op_name, value_rec)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            created_transaction = make_update(
+                serializer.validated_data['update_account'].pk,
+                serializer.validated_data['dest_account'].pk,
+                serializer.validated_data['value'],
+            )
+            return Response(TransactionSerializer(created_transaction).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -158,16 +160,17 @@ class TransactionDetail(APIView):
             raise Http404
 
     def get(self, request, pk, format=None):
-        transaction = self.get_object(pk)
-        serializer = TransactionSerializer(transaction)
+        transaction_item = self.get_object(pk)
+        serializer = TransactionSerializer(transaction_item)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        transaction = self.get_object(pk)
-        serializer = TransactionSerializer(transaction, data=request.data)
+        transaction_item = self.get_object(pk)
+        serializer = TransactionSerializer(transaction_item, data=request.data)
         if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data)
-        return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class PossessionTitleList(APIView):
@@ -188,7 +191,7 @@ class PossessionTitleDetail(APIView):
     def get_object(self, pk):
         try:
             return PossessionTitle.objects.get(pk=pk)
-        except Transactions.DoesNotExist:
+        except PossessionTitle.DoesNotExist:
             raise Http404
 
     def get(self, request, pk, format=None):
@@ -202,7 +205,7 @@ class PossessionTitleDetail(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TitleAttrList(APIView):
@@ -235,10 +238,52 @@ class TitleAttrDetail(APIView):
         titleattr = self.get_object(pk)
         serializer = TitleAttrSerializer(titleattr, data=request.data)
         if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class InfoPossessionList(APIView):
+    def get(self, request, format=None):
+        info_possession = InfoPossession.objects.all()
+        serializer = InfoPossessionSerializer(info_possession, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = InfoPossessionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class InfoPossessionDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return InfoPossession.objects.get(pk=pk)
+        except InfoPossession.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        info_possession = self.get_object(pk)
+        serializer = InfoPossessionSerializer(info_possession)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        info_possession = self.get_object(pk)
+        serializer = InfoPossessionSerializer(info_possession, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        info_possession = self.get_object(pk)
+        info_possession.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@transaction.atomic
 def make_update(conta1, conta2, valor):
     account1 = Account.objects.get(pk=conta1)
     dest_transfer = Account.objects.get(pk=conta2)
@@ -248,6 +293,6 @@ def make_update(conta1, conta2, valor):
     dest_transfer.balance += Decimal(valor)
     account1.save()
     dest_transfer.save()
-    transfer1 = transfer1.save()
-    transfer2 = transfer2.save()
-    return 'OK'
+    transfer1.save()
+    transfer2.save()
+    return transfer1

@@ -1,6 +1,6 @@
-from django.contrib.auth.models import User, Group
-from app.models import *
 from rest_framework import serializers
+
+from app.models import Account, InfoPossession, PossessionTitle, TitleAttr, Transactions
 
 
 class AccountSerializer(serializers.ModelSerializer):
@@ -26,7 +26,8 @@ class TitleAttrSerializer(serializers.ModelSerializer):
         model = TitleAttr
         fields = ['id', 'possession', 'name_attr', 'value', 'type_info']
 
+
 class PossessionTitleSerializer(serializers.ModelSerializer):
     class Meta:
         model = PossessionTitle
-        fields = ['owner_title']
+        fields = ['numberid', 'name_title', 'owner_title', 'color', 'value']
